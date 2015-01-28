@@ -1,8 +1,8 @@
 __author__ = 'evgeniy'
 
 # import os
-import sys
-import string
+#import string
+import conn
 try:
     import paramiko
 except ImportError:
@@ -10,13 +10,14 @@ except ImportError:
     exit(1)
 
 #
-# TODO move global definitions to configuration file
-#
-
+# TODO move definitions to configuration file
 # TODO Create class describing connection to host
-hosts=["chassis-hp.me-corp.lan", "chassis-dell1.me-corp.lan"]
-user="root"
-passwd="password"
 
-for host in hosts:
+hosts=["mews2206", "mews111", "mews046"]
+usr="root"
+pwd="passwd"
+
+for hst in hosts:
+    c = conn.Conn(hst, usr, pwd, 'uptime')
+    c.runcmd()
 
