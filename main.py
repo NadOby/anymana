@@ -17,7 +17,7 @@ hosts=["mews2206", "mews111", "mews046"]
 usr="root"
 pwd="passwd"
 
-for hst in hosts:
-    c = conn.Conn(hst, usr, pwd, 'uptime')
-    c.runcmd()
-
+for h in hosts:
+    c = HPConnection(h, usr, pwd)
+    c.power()
+    c.power("status")
