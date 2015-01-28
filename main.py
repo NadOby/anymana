@@ -4,6 +4,7 @@ __author__ = 'evgeniy'
 # import os
 #import string
 import conn
+import conn_factory
 try:
     import paramiko
 except ImportError:
@@ -14,11 +15,11 @@ except ImportError:
 # TODO move definitions to configuration file
 # TODO Create class describing connection to host
 
-hosts=["mews2206", "mews111", "mews046"]
+hosts=["qabl01-mgm", "qabl47-mgm"]
 usr="root"
-pwd="passwd"
+pwd="ipasdfas"
 
 for h in hosts:
-    c = conn.HPConnection(h, usr, pwd)
+    c = conn_factory.make_connection(h, usr, pwd)
     c.power()
-    c.power("status")
+

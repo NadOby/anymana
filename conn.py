@@ -39,7 +39,7 @@ class AbstractConnection(object):
             exit(1)
 
         stderr, stdout, stdin = conn.exec_command(cmd)
-        print (stdout.readlines())
+        print (stdout.read())
         for line in stdout.readlines():
             if line != string.whitespace:
                 print(line)
@@ -49,7 +49,8 @@ class HPConnection(AbstractConnection):
     POWER_CMD = { 
                   "on":     "power on",
                   "off":    "power on",
-                  "status": "power"
+                  "status": "power",
+                  "reset":  "power reset"
     }
         
     def __init__(self, host, user, passwd):
@@ -57,5 +58,10 @@ class HPConnection(AbstractConnection):
 
     def get_power_command(self, disposition):
         return HPConnection.POWER_CMD[disposition]
-
+    
+    def reset(self, soft = True):
+        if soft:
+            return self.runcmd("reboot")
+        else:
+            return self.power("reset")
 
