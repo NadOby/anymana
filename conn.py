@@ -53,9 +53,9 @@ class HPConnection(AbstractConnection):
     }
         
     def __init__(self, host, user, passwd):
-        super(HPCmd, self).__init__(host, user, passwd)
+        super(HPConnection, self).__init__(host, user, passwd)
 
     def get_power_command(self, disposition):
-        return POWER_CMD[disposition]
+        return HPConnection.POWER_CMD[disposition]
 
 

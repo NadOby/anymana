@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 __author__ = 'evgeniy'
 
 # import os
@@ -18,6 +19,6 @@ usr="root"
 pwd="passwd"
 
 for h in hosts:
-    c = HPConnection(h, usr, pwd)
+    c = conn.HPConnection(h, usr, pwd)
     c.power()
     c.power("status")
