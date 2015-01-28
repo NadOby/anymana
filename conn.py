@@ -33,6 +33,12 @@ class Conn():
                 print(line)
         conn.close()
 
-class HPCmd ():
-    def __init__(self):
-        pass
+class HPCmd(Conn):
+    HP_COMMAND = {
+            "poweron":"power on"
+            "poweroff": "power off"
+    }
+    def __init__(self, host, user, passwd, command):
+        cmd = HP_COMMAND[command]
+        super(HPCmd, self).__init__(host, user, passwd, cmd)
+
